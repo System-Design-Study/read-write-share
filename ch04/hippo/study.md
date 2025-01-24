@@ -78,19 +78,19 @@ API 요청 횟수가 제한 장치에 정의된 임계치(threshold)를 넘어�
 
 - 서버 측
   
-    <img src="img.png" width="500" height="auto">
+    <img src="img/img.png" width="500" height="auto">
 
 
 - 미들웨어
 
     - 처리율제한 장치를 API 서버에 두는 대신, 처리율 제한 미들웨어를 만들어 해당 미들웨어로 하여금 요청을 통제하도록 하는 것
     
-        <img src="img_1.png" width="500" height="auto">
+        <img src="img/img_1.png" width="500" height="auto">
     
     
 - API 서버의 처리율이 초당 2개의 요철으로 제한된 상황에서, 클라이언트가 3번째 요청을 앞의 두 요청과 같은 초 범위내에서 전송했을 때!
     
-    <img src="img_2.png" width="500" height="auto">
+    <img src="img/img_2.png" width="500" height="auto">
 
 
 ---
@@ -138,7 +138,7 @@ API 게이트웨이는 처리율 제한, SSL 종단(termination), 사용자 인�
 ### 동작 원리
 
 
-<img src="img_3.png" width="500" height="auto">
+<img src="img/img_3.png" width="500" height="auto">
 
 토큰 버킷은 지정된 용량을 갖는 컨테이너이다.
 
@@ -147,7 +147,7 @@ API 게이트웨이는 처리율 제한, SSL 종단(termination), 사용자 인�
 버킷이 가득 차면 추가로 공급된 토큰은 버려진다 (overflow)
 
 
-<img src="img_4.png" width="500" height="auto">
+<img src="img/img_4.png" width="500" height="auto">
 
 각 요청은 처리될 때마다 하나의 토근을 사용한다.
 
@@ -157,7 +157,7 @@ API 게이트웨이는 처리율 제한, SSL 종단(termination), 사용자 인�
 - 충분한 토큰이 없는 경우, 해당 요청은 버려진다. (dropped)
 
 
-<img src="img_5.png" width="500" height="auto">
+<img src="img/img_5.png" width="500" height="auto">
 토큰 버킷의 크기는 4, 토큰 공급률(refill rate)은 분당 4인 예시
 
 
@@ -206,7 +206,7 @@ API 게이트웨이는 처리율 제한, SSL 종단(termination), 사용자 인�
 
 - 지정된 시간마다 큐에서 요청을 꺼내어 처리한다.
 
-<img src="img_6.png" width="500" height="auto">
+<img src="img/img_6.png" width="500" height="auto">
 
 **누출 버킷 알고리즘은 두 인자를 사용한다.**
 
@@ -233,7 +233,7 @@ API 게이트웨이는 처리율 제한, SSL 종단(termination), 사용자 인�
 - 요청이 접수될 때마다 이 카운터의 값은 1씩 증가한다.
 - 이 카운터의 값이 사전에 설정된 임계치에 도달하면 새로운 요청은 새 윈도가 열릴때까지 버려진다.
 
-<img src="img_7.png" width="500" height="auto">
+<img src="img/img_7.png" width="500" height="auto">
 
 - 타임라인의 시간 단위는 1초다.
 - 시스템은 초당 3개까지의 요청만을 허용한다.
@@ -243,7 +243,7 @@ API 게이트웨이는 처리율 제한, SSL 종단(termination), 사용자 인�
 
 윈도의 경계 부근에 순간적으로 많은 트래픽이 집중될 경우 윈도에 할당된 양보다 더 많은 요청이 처리될 수 있다.
 
-<img src="img_8.png" width="500" height="auto">
+<img src="img/img_8.png" width="500" height="auto">
 위 예시의 시스템은 분당 최대 5개의 요청만을 허용하는 시스템이다. 카운터는 매분마다 초기화된다.
 
 예를 보면 2:00:00와 2:01:00 사이에 다섯 개의 요청이 들어왔다.
@@ -286,7 +286,7 @@ API 게이트웨이는 처리율 제한, SSL 종단(termination), 사용자 인�
 
 - 로그의 크기가 허용치보다 같거나 작으면 요청을 시스템에 전달한다. 그렇지 않은 경우에는 처리를 거부한다.
 
-<img src="img_9.png" width="500" height="auto">
+<img src="img/img_9.png" width="500" height="auto">
 위 예시의 처리율 제한기는 분당 최대 2회의 요청만을 처리
 
 - 요청이 1:00:01에 도착하였을 때, 로그는 비어 있는 상태다. 따라서 요청은 허용된다.
@@ -318,7 +318,7 @@ API 게이트웨이는 처리율 제한, SSL 종단(termination), 사용자 인�
 
 이동 윈도 카운터 알고리즘은 고정 윈도 카운터 알고리즘과 이동 윈도 로깅 알고리즘을 결합한 것이다.
 
-<img src="img_10.png" width="500" height="auto">
+<img src="img/img_10.png" width="500" height="auto">
 처리율 제한 장치의 한도가 분당 7개 요청으로 설정되어 있고, 이전 1분 동안 5개의 요청이, 그리고 현재 1분동안 3개의 요청이 왔다고 해보자.
 
 - 현재 1분간의 요청 수 + 직전 1분간의 요청 수 * 이동 윈도와 직전 1분이 겹치는 비율
@@ -363,7 +363,7 @@ API 게이트웨이는 처리율 제한, SSL 종단(termination), 사용자 인�
 > INCR : 메모리에 저장된 카운터의 값을 1만큼 증가시킨다.
 > EXPIRE : 카운터에 타임아웃 값을 설정한다. 설정된 시간이 지나면 카운터는 자동으로 삭제된다.
 
-<img src="img_11.png" width="500" height="auto">
+<img src="img/img_11.png" width="500" height="auto">
 
 처리율 제한 장치의 개략적 구조
 
@@ -443,7 +443,7 @@ HTTP 응답 헤더 (response header)에 있다!!
 
 ### 상세 설계
 
-<img src="img_12.png" width="500" height="auto">
+<img src="img/img_12.png" width="500" height="auto">
 
 - 처리율 제한 규칙은 디스크에 보관한다. 작업 프로세스는 수시로 규칙을 디스트에서 읽어 캐시에 저장한다.
 
@@ -477,7 +477,7 @@ HTTP 응답 헤더 (response header)에 있다!!
 
 병행성이 심한 환경에서는 경쟁 조건 이슈가 발생할 수 있다.
 
-<img src="img_13.png" width="500" height="auto">
+<img src="img/img_13.png" width="500" height="auto">
 
 경쟁 조건 문제를 해결하는 가장 널리 알려진 해결책은 락(lock)이다.
 
@@ -495,7 +495,7 @@ HTTP 응답 헤더 (response header)에 있다!!
 
 그래서 처리율 제한 장치 서버를 여러 대 두게 되면 동기화가 필요해진다.
 
-<img src="img_14.png" width="500" height="auto">
+<img src="img/img_14.png" width="500" height="auto">
 
 웹 계층은 무상태이므로 클라이언트는 요청을 각기 다른 제한 장치로 보내게 될 수 있다.
 
@@ -508,7 +508,7 @@ HTTP 응답 헤더 (response header)에 있다!!
 
 **더 나은 해결책 : 레디스와 같은 중앙 집중형 데이터 저장소를 쓰는 것!!**
 
-<img src="img_15.png" width="500" height="auto">
+<img src="img/img_15.png" width="500" height="auto">
 
 
 #### 성능 최적화
@@ -569,4 +569,4 @@ HTTP 응답 헤더 (response header)에 있다!!
   - 재시도(retry) 로직을 구현할 때는 충분한 백오프(back-off) 시간을 둔다.
 
 ---
-<img src="img_5.png" width="500" height="auto">
+<img src="img/img_5.png" width="500" height="auto">
