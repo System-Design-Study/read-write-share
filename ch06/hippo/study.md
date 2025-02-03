@@ -79,7 +79,7 @@ CAP 정리는 데이터 일관성, 가용성, 파티션 감내라는 세 가지 
   - 파티션 감내는 네트워크에 파티션이 생기더라도 시스템은 계속 동작하여야 한다는 것을 뜻한다.
   
 
-<img src="img.png" width="300" height="auto">
+<img src="img/img.png" width="300" height="auto">
 
 CAP 정히는 이들 가운데 어떤 두 가지를 충족하려면 나머지 하나는 반드시 희생되어야 한다는 것을 의미한다.
 
@@ -100,7 +100,7 @@ CAP 정히는 이들 가운데 어떤 두 가지를 충족하려면 나머지 �
 
 **이상적 상태**
 
-<img src="img_1.png" width="300" height="auto">
+<img src="img/img_1.png" width="300" height="auto">
 
 이상적 환경이라면 네트워크가 파티션되는 상황은 절대 일어나지 않을 것이다.
 
@@ -115,7 +115,7 @@ n1에 기록된 데이터는 자동적으로 n2와 n3에 복제된다.
 
 그리고 파티션 문제가 발생하면 우리는 일관성과 가용성 사이에서 하나를 선택해야 한다.
 
-<img src="img_2.png" width="300" height="auto">
+<img src="img/img_2.png" width="300" height="auto">
 
 위 그림은 n3에 장애가 발생하여 n1 및 n2와 통신할 수 없는 상황이다.
 
@@ -173,7 +173,7 @@ ex) 은행권 시스템
 
 안정 해시 (consistent hash)는 이런 문제를 푸는 데 적합한 기술이다!
 
-<img src="img_3.png" width="300" height="auto">
+<img src="img/img_3.png" width="300" height="auto">
 
 
 **안정 해시를 사용하여 데이터를 파티션하면 좋은 점!**
@@ -195,7 +195,7 @@ ex) 은행권 시스템
 
 따라서 N=3으로 설정한 경우 key0은 s1, s2, s3에 저장된다.
 
-<img src="img_4.png" width="300" height="auto">
+<img src="img/img_4.png" width="300" height="auto">
 
 But!!!
 
@@ -290,9 +290,9 @@ W + R <= N : 강한 일관성이 보장되지 않음
 **데이터 일관성이 깨지는 예제**
 
 
-<img src="img_1.png" width="300" height="auto">
+<img src="img/img_1.png" width="300" height="auto">
 
-<img src="img_1.png" width="300" height="auto">
+<img src="img/img_1.png" width="300" height="auto">
 
 서버 1은 "name"에 매달린 값을 "johnSanFrancisco"로 바꾸고, 서버 2는 "johnNewYork"으로 바꾼다고 하자.
 
@@ -325,7 +325,7 @@ W + R <= N : 강한 일관성이 보장되지 않음
 - [Si, vi]가 있으면 vi를 증가시킨다.
 - 그렇지 않으면 새 항목 [Si, 1]를 만든다.
 
-<img src="img_8.png" width="300" height="auto">
+<img src="img/img_8.png" width="300" height="auto">
 
 
 1. 클라이언트가 데이터 D1을 시스템에 기록한다. 이 쓰기 연산을 처리한 서버는 Sx이다. 따라서 백터 시계는 D1[(Sx, 1)]으로 변한다.
@@ -385,7 +385,7 @@ Y의 벡터 시계 구성요소 가운데 X의 벡터 시계 동일 서버 구�
 
 보통 두 대 이상의 서버가 똑같이 서버 A의 장애를 보고해야 해당 서버에 실제로 장애가 발생했다고 간주하게 된다.
 
-<img src="img_9.png" width="300" height="auto">
+<img src="img/img_9.png" width="300" height="auto">
 
 모든 노드 사이에 멀티캐스팅(multicasting) 채털을 구축하는 것이 서버 장애를 감지하는 가장 손쉬운 방법이다.
 
@@ -407,7 +407,7 @@ Y의 벡터 시계 구성요소 가운데 X의 벡터 시계 동일 서버 구�
 - 어떤 멤버의 박동 카운터 값이 지정된 시간 동안 갱신되지 않으면 해당 멤버는 장애 상태인 것으로 간주한다.
   
 
-<img src="img_10.png" width="300" height="auto">
+<img src="img/img_10.png" width="300" height="auto">
 
 - 노드 s0은 그림 좌측의 테이블과 같은 멤버십 목록을 가진 상태다.
 - 노드 s0은 노드 s2(멤버 ID=2)의 박동 카운터가 오랫동안 증가되지 않았다는 것을 발견한다.
@@ -437,7 +437,7 @@ Y의 벡터 시계 구성요소 가운데 X의 벡터 시계 동일 서버 구�
 따라서 이런 장애 처리 방안을 단서 후 임시 위탁 (hinted handoff) 기법이라 부른다.
 
 
-<img src="img_11.png" width="300" height="auto">
+<img src="img/img_11.png" width="300" height="auto">
 
 장애 상태인 노드 s2에 대한 읽기 및 쓰기 연산은 일시적을 노드 s3가 처리한다.
 
@@ -470,7 +470,7 @@ anti-entropy protocol 은 사본들을 비교하여 최신 버전으로 갱신�
 
 키 공간이 1~12 일 때 머클 트리
 
-<img src="img_12.png" width="300" height="auto">
+<img src="img/img_12.png" width="300" height="auto">
 
 일관성이 망가진 데이터가 위치한 상자는 다른색이다.
 
@@ -505,7 +505,7 @@ anti-entropy protocol 은 사본들을 비교하여 최신 버전으로 갱신�
 
 ## 시스템 아키텍처 다이어그램
 
-<img src="img_13.png" width="300" height="auto">
+<img src="img/img_13.png" width="300" height="auto">
 
 이 아키텍처의 주된 기능은 다음과 같다.
 
@@ -518,13 +518,13 @@ anti-entropy protocol 은 사본들을 비교하여 최신 버전으로 갱신�
 
 완전히 분산된 설계를 채택하였으므로, 모든 노드는 아래 기능을 전부 지원해야 한다.
 
-<img src="img_14.png" width="300" height="auto">
+<img src="img/img_14.png" width="300" height="auto">
 
 ---
 
 ### 쓰기 경로
 
-<img src="img_15.png" width="300" height="auto">
+<img src="img/img_15.png" width="300" height="auto">
 
 쓰기 요청이 특정 노드에 전달되면 무슨일이 벌어질까?
 
@@ -537,7 +537,7 @@ anti-entropy protocol 은 사본들을 비교하여 최신 버전으로 갱신�
 
 ### 읽기 경로
 
-<img src="img_16.png" width="300" height="auto">
+<img src="img/img_16.png" width="300" height="auto">
 
 데이터가 메모리에 없는 경우에는 디스크에서 가져와야 한다.
 
@@ -548,7 +548,7 @@ anti-entropy protocol 은 사본들을 비교하여 최신 버전으로 갱신�
 
 데이터가 메모리에 없을 때 읽기 연산이 처리되는 경로를 보면 아래와 같다.
 
-<img src="img_17.png" width="300" height="auto">
+<img src="img/img_17.png" width="300" height="auto">
 
 1. 데이터가 메모리 있는지 검사한다. 없으면 2로 간다.
 2. 데이터가 메모리에 없으므로 블룸 필터를 검사한다.
@@ -596,7 +596,7 @@ SSTable은 키-값 데이터를 저장하지만, **특정 키가 있는지 빠�
 
 분산 키 - 값 저장소가 가져야 하는 기능과 그 기능 구현에 이용되는 기술
 
-<img src="img_18.png" width="300" height="auto">
+<img src="img/img_18.png" width="300" height="auto">
 
 ---
 
